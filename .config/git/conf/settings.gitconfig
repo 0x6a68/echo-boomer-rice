@@ -1,0 +1,51 @@
+[core]
+editor = $EDITOR
+pager = $PAGER
+whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+excludesfile = ~/.config/git/conf/ignore.gitconfig
+attributesfile = ~/.config/git/conf/attributes.gitconfig
+
+[init]
+templatedir = ~/.config/git/templatedir
+
+[pull]
+rebase = true
+
+[push]
+default = current
+followtags = true
+
+[diff]
+tool = nvimdiff
+renames = copies
+submodule = log
+
+[difftool "nvimdiff"]
+cmd = nvim -d $LOCAL $REMOTE
+trustexitcode = true
+
+[merge]
+tool = nvimmerge
+log = true
+
+[mergetool "nvimmerge"]
+cmd = nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+trustexitcode = true
+
+[commit]
+verbose = true
+
+[status]
+short = true
+branch = true
+
+[apply]
+whitespace = error
+
+[grep]
+linenumber = true
+patterntype = perl
+
+[column]
+ui = auto
+tag = never

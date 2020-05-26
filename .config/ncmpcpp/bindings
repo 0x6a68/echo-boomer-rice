@@ -1,0 +1,121 @@
+def_key "H"
+    seek_backward
+
+def_key "J"
+    scroll_down
+    scroll_down
+    scroll_down
+
+def_key "K"
+    scroll_up
+    scroll_up
+    scroll_up
+
+def_key "L"
+    seek_forward
+
+def_key "g"
+    execute_command
+def_command "g" [immediate]
+    move_home
+
+def_key "G"
+    move_end
+
+def_key "n"
+    next_found_item
+def_key "N"
+    previous_found_item
+
+def_key "mouse"
+  mouse_event
+
+def_key "k"
+  scroll_up
+
+def_key "shift-up"
+  select_item
+
+def_key "j"
+  scroll_down
+
+def_key "shift-down"
+  select_item
+
+def_key "["
+  scroll_up_album
+
+def_key "]"
+  scroll_down_album
+
+def_key "{"
+  scroll_up_artist
+
+def_key "}"
+  scroll_down_artist
+
+def_key "page_up"
+  page_up
+
+def_key "end"
+  move_end
+
+def_key "insert"
+  select_item
+
+def_key "enter"
+  enter_directory
+
+def_key "enter"
+  toggle_output
+
+def_key "enter"
+  run_action
+
+def_key "enter"
+  play_item
+
+def_key "space"
+  add_item_to_playlist
+
+def_key "space"
+  toggle_lyrics_update_on_song_change
+
+def_key "space"
+  toggle_visualization_type
+
+def_key "delete"
+  delete_playlist_items
+
+def_key "delete"
+  delete_browser_items
+
+def_key "delete"
+  delete_stored_playlist
+
+def_key "l"
+  next_column
+
+def_key "right"
+  slave_screen
+
+def_key "right"
+  volume_up
+
+def_key "+"
+  volume_up
+
+def_key "h"
+  previous_column
+
+def_key "left"
+  master_screen
+
+def_key "left"
+  volume_down
+
+def_key "-"
+  volume_down
+
+def_key ":"
+  execute_command

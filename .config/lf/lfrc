@@ -1,0 +1,43 @@
+# Settings {{{
+set shell sh		# interpreter for shell commands (needs to be POSIX compatible)
+set shellopts '-eu' # set '-eu' options for shell commands
+set ifs "\n" # set internal field separator (IFS) to "\n" for shell commands
+set hidden true
+set color256 true
+set drawbox true
+set icons true
+set ignorecase true
+set ratios 1:2
+set info size
+set dircounts true
+# }}}
+
+# Commands {{{
+cmd open ${{
+    case $(file --mime-type "$f" -bL) in
+        text/*|application/json) $EDITOR "$f";;
+        *) filehandler "$f" ;;
+    esac
+}}
+
+cmd mkdir $mkdir -p "$(echo $* | tr ' ' '\ ')"
+# }}}
+
+# Mappings {{{
+map f $lf -remote "send $id cd $(cut -d'	' -f2 ~/.config/directories | fzf)"
+map <c-f> $lf -remote "send $id select '$(fzf)'"
+map <c-r> reload
+map <enter> open
+map dd cut
+map D delete
+map <c-n> push :mkdir<space>
+
+map A rename # at the very end
+map c push A<c-u> # new rename
+
+map <c-e> down
+map <c-y> up
+map V push :!nvim<space>
+# }}}
+
+# vim:foldmethod=marker:foldlevel=0

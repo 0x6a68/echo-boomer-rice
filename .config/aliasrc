@@ -1,0 +1,36 @@
+#!/bin/sh
+
+# Use neovim for vim if present.
+command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
+
+# Verbosity
+alias \
+	cp="cp -iv" \
+	mv="mv -iv" \
+	rm="rm -vI"
+
+# Replace "ls" to "exa"
+alias \
+  ls="exa -al --color=always --group-directories-first" \
+  la="exa -a --color=always --group-directories-first" \
+  ll="exa -l --color=always --group-directories-first" \
+  lt="exa -aT --color=always --group-directories-first"
+
+# Colorize commands when possible.
+alias \
+	grep="grep --color=auto" \
+	diff="diff --color=auto"
+
+# Massage GPG
+alias \
+  gpg="gpg --options $XDG_CONFIG_HOME/gnupg/gpg.conf" \
+  gpg-agent="gpg --options $XDG_CONFIG_HOME/gnupg/gpg-agent.conf"
+
+alias \
+  ssh="ssh -F $XDG_CONFIG_HOME/ssh/ssh_config"
+
+# Wiki
+alias wiki="vim -c VimwikiIndex"
+
+# Dotfiles
+alias config="git --git-dir=$DOTFILES_HOME --work-tree=$HOME"

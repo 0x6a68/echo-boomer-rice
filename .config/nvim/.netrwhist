@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/home/jhh/.local/src/github.com/jhattwich/mean_time'
+let g:netrw_dirhist_2='/home/jhh/.local/src/github.com/jhattwich/mean_time/lib/mean_time/core'
+let g:netrw_dirhist_1='/home/jhh/.local/src/github.com/jhattwich/mean_time/lib/mean_time'
+let g:netrw_dirhist_0='/home/jhh/.local/src/github.com/jhattwich/mean_time/lib'
+let g:netrw_dirhist_9='/home/jhh/.local/src/github.com/jhattwich/mean_time'
+let g:netrw_dirhist_8='/home/jhh/.local/src/github.com/jhattwich/mean_time/lib/mean_time/core'
+let g:netrw_dirhist_7='/home/jhh/.local/src/github.com/jhattwich/mean_time/lib/mean_time'
+let g:netrw_dirhist_6='/home/jhh/.local/src/github.com/jhattwich/mean_time/lib'
+let g:netrw_dirhist_5='/home/jhh/.local/src/github.com/jhattwich/mean_time'
+let g:netrw_dirhist_4='/home/jhh/.local/src/github.com/jhattwich/mean_time/lib/mean_time/core'

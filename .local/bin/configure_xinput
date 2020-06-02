@@ -1,0 +1,15 @@
+#!/bin/sh
+# Configure Touchpad via `libinput`
+
+TOUCHPAD_ID=`xinput list | grep Touchpad | cut -d$'\t' -f 2 | cut -d '=' -f 2`
+
+CODE_ENABLE_TAPPING=`xinput list-props $TOUCHPAD_ID \
+	| grep "Tapping Enabled (" | cut -d '(' -f 2 | cut -d ')' -f 1`
+CODE_ENABLE_TAPPING_DRAG_LOCK=`xinput list-props $TOUCHPAD_ID \
+	| grep "Tapping Drag Lock Enabled (" | cut -d '(' -f 2 | cut -d ')' -f 1`
+CODE_MIDDLE_EMULATION_ENABLED=`xinput list-props $TOUCHPAD_ID \
+	| grep "Middle Emulation Enabled (" | cut -d '(' -f 2 | cut -d ')' -f 1`
+
+xinput set-prop $TOUCHPAD_ID $CODE_ENABLE_TAPPING 1
+xinput set-prop $TOUCHPAD_ID $CODE_ENABLE_TAPPING_DRAG_LOCK 1
+xinput set-prop $TOUCHPAD_ID $CODE_MIDDLE_EMULATION_ENABLED 1

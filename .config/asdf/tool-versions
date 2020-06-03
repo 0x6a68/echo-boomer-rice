@@ -3,3 +3,4 @@ elixir 1.10.3-otp-22
 erlang 22.3.2
 golang 1.14.2
 haskell 8.8.3
+direnv 2.20.0

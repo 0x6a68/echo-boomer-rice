@@ -12,6 +12,7 @@ export EDITOR="nvim"
 export TERMINAL="st"
 export BROWSER="firefox"
 export MANPAGER="/bin/sh -c \"col -b | vim --not-a-term -c 'set ft=man ts=8 nomod nolist noma' -\""
+export PAGER=less
 
 # Fix XDG compliance (https://wiki.archlinux.org/index.php/XDG_Base_Directory)
 export TASKDATA="$XDG_DATA_HOME/task"

@@ -36,14 +36,7 @@ call plug#begin(g:xdg_data_home . '/plugged')
   Plug 'junegunn/fzf.vim'
   Plug 'vim-test/vim-test'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'vimwiki/vimwiki', {'branch': 'dev'}
 call plug#end()
-" }}}
-
-" Encoding {{{
-set encoding=UTF-8 " Default encoding. (vim-only)
-scriptencoding UTF-8 " Default encoding for current script.
-set fileformats=unix " Only use Unix end-of-line format.
 " }}}
 
 " Settings {{{
@@ -80,7 +73,6 @@ set backspace=indent,eol,start " Allow backspacing over everything in insert mod
 set belloff=all " Turn off the bell upon all events.
 set breakindent " Wrapped lines will be indented with same amount of space.
 set clipboard=unnamedplus " Sync unnamed register with system clipboard.
-" set confirm " Seek for confirmation for certain commands instead of giving errors.
 set display=lastline " As much as possible of the last line in a window will be displayed.
 set keywordprg= " Disable definition search by default.
 set modelines=1 " Maximum number of lines that is checked for set commands.
@@ -93,7 +85,6 @@ set nostartofline " Prevent the cursor from changing the current column when jum
 set wrap " Prevent wrapping for long lines.
 set nrformats=bin,hex " Only accept binary and hexadecimal numbers.
 set pumheight=10 " Maximum number of items to show in the pop-up menu for completion.
-set regexpengine=1 " Use old regular expression engine.
 set report=0 " Threshold for reporting number of lines changed.
 set scrolloff=8 " Minimum number of screen lines to keep above and below the cursor.
 set sessionoptions=blank,buffers,curdir,folds,help,localoptions,resize,tabpages,winsize " Options for `mksession` command.
@@ -109,6 +100,8 @@ set ttyfast " More characters will be sent to the screen for redrawing in termin
 set updatetime=2000 " If that milliseconds nothing is typed CursorHold event will trigger.
 set visualbell " Use visual bell instead of beeping on errors.
 set iskeyword+=- " Treat words with dash as a word in Vim
+set redrawtime=100000
+"set re=1
 " }}}
 
 " Interface {{{
@@ -176,7 +169,7 @@ set viewoptions=cursor,folds " Options used by `mkview` and `loadview` commands.
 
 " Buffers, Windows, Tabs {{{
 set autoread " Read the file again if have been changed outside of Vim.
-set hidden " Allows you to hide buffers with unsaved changes without being prompted.
+" set hidden " Allows you to hide buffers with unsaved changes without being prompted.
 set splitbelow " Splitting a window will put the new window below of the current one.
 set splitright " Splitting a window will put the new window right of the current one.
 set switchbuf=useopen " Jump to the first open window that contains the specified buffer.

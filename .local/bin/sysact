@@ -4,8 +4,6 @@
 
 cmds="\
 lock		slock
-leave dwm	kill -TERM $(pidof -s dwm)
-renew dwm	kill -HUP $(pidof -s dwm)
 hibernate	${hib:-systemctl suspend-then-hibernate}
 reboot		${reb:-reboot}
 shutdown	${shut:-shutdown -h now}"

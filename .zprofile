@@ -21,12 +21,12 @@ export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password_store"
 export GOPASS_CONFIG="$XDG_CONFIG_HOME/gopass/config.yml"
 export ALSA_CONFIG_PATH="$XDG_CONFIG_HOME/alsa/asoundrc"
-export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
 export ASDF_DATA_DIR="$XDG_DATA_HOME/asdf"
 export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME="$XDG_CONFIG_HOME/asdf/tool-versions"
 export ASDF_CONFIG_FILE="$XDG_CONFIG_HOME/asdf/asdfrc"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export STACK_ROOT="$XDG_DATA_HOME/stack"
 
 export SHORT_HOST=${HOST/.*/}
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"

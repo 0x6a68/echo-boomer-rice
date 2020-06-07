@@ -27,6 +27,9 @@ export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME="$XDG_CONFIG_HOME/asdf/tool-versions"
 export ASDF_CONFIG_FILE="$XDG_CONFIG_HOME/asdf/asdfrc"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export STACK_ROOT="$XDG_DATA_HOME/stack"
+export XMONAD_CONFIG_HOME="$XDG_CONFIG_HOME/xmonad"
+export XMONAD_DATA_HOME="$XDG_DATA_HOME/xmonad"
+export XMONAD_CACHE_HOME="$XDG_CACHE_HOME/xmonad"
 
 export SHORT_HOST=${HOST/.*/}
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"

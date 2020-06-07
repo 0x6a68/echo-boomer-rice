@@ -8,11 +8,10 @@ Config {
     -- commands
     , commands =
          [ Run Date     "%F (%a) %T" "date" 10
-         , Run Memory   ["-t","<usedratio>%", "-w", "2" ] 10
-         , Run MultiCpu ["-t", "<total0>% <total1>% <total2>% <total3>%"
+         , Run Memory   ["-t","<usedratio>", "-w", "2" ] 10
+         , Run MultiCpu ["-t", "<autototal>"
             , "-L", "30", "-H", "60"
             , "-h","#FF5555", "-l", "#4D4D4D"
-            , "-w", "2"
             ] 10
          , Run StdinReader
          , Run BatteryP ["BAT0"]

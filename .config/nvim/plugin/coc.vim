@@ -10,28 +10,7 @@ let g:coc_global_extensions=[
 let g:coc_user_config={
       \ "coc.preferences.formatOnSaveFiletypes": ["*"],
       \ "suggest.enabledPreview": v:true,
-      \ "diagnostic.errorSign": "‼️",
-      \ "languageserver": {
-      \   "haskell": {
-      \     "command": "hie-wrapper",
-      \     "args": ["--lsp"],
-      \     "rootPatterns": [
-      \       "*.cabal",
-      \       "stack.yaml",
-      \       "cabal.project",
-      \       "package.yaml"
-      \     ],
-      \     "filetypes": [
-      \       "hs",
-      \       "lhs",
-      \       "haskell"
-      \     ],
-      \     "initializationOptions": {
-      \       "languageServerHaskell": {
-      \       }
-      \     }
-      \   }
-      \ }
+      \ "diagnostic.errorSign": "‼️"
 \}
 
 let g:coc_data_home=g:xdg_data_home . '/coc'

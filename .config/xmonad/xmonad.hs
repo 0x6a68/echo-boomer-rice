@@ -58,15 +58,30 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_r ), spawn "xmonad --recompile; xmonad --restart")
     , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
 
-    -- Windows Management
-    , ((modm              , xK_j), windows W.focusDown  )
-    , ((modm .|. shiftMask, xK_j), windows W.swapDown   )
-    , ((modm              , xK_k), windows W.focusUp    )
-    , ((modm .|. shiftMask, xK_k), windows W.swapUp)
+    -- -- PAMixer
+    , ((modm              , xK_minus), spawn "pamixer --allow-boost -d 5")
+    , ((modm .|. shiftMask, xK_minus), spawn "pamixer --allow-boost -d 15")
+    , ((modm              , xK_equal), spawn "pamixer --allow-boost -i 5")
+    , ((modm .|. shiftMask, xK_equal), spawn "pamixer --allow-boost -i 15")
 
-    , ((modm, xK_h), sendMessage Shrink)
-    , ((modm, xK_l), sendMessage Expand)
-    , ((modm, xK_space), windows W.swapMaster)
+    -- -- MPC
+    , ((modm              , xK_p           ), spawn "mpc toggle")
+    , ((modm              , xK_comma       ), spawn "mpc prev")
+    , ((modm              , xK_period      ), spawn "mpc next")
+    , ((modm              , xK_bracketleft ), spawn "mpc seek -10")
+    , ((modm .|. shiftMask, xK_bracketleft ), spawn "mpc seek -60")
+    , ((modm              , xK_bracketright), spawn "mpc seek +10")
+    , ((modm .|. shiftMask, xK_bracketright), spawn "mpc seek +60")
+
+    -- Windows Management
+    , ((modm              , xK_j    ), windows W.focusDown)
+    , ((modm .|. shiftMask, xK_j    ), windows W.swapDown)
+    , ((modm              , xK_k    ), windows W.focusUp)
+    , ((modm .|. shiftMask, xK_k    ), windows W.swapUp)
+    , ((modm              , xK_h    ), sendMessage Shrink)
+    , ((modm              , xK_l    ), sendMessage Expand)
+    , ((modm              , xK_space), windows W.swapMaster)
+
     ]
 
     ++

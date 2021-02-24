@@ -27,15 +27,26 @@ call plug#begin(g:xdg_data_home . '/plugged')
   Plug 'dracula/vim', { 'as': 'dracula' }
   Plug 'ap/vim-css-color'
   Plug 'editorconfig/editorconfig-vim'
-  Plug 'itchyny/lightline.vim'
   Plug 'kassio/neoterm'
+  Plug 'itchyny/lightline.vim'
   Plug 'sheerun/vim-polyglot'
+  Plug 'elixir-editors/vim-elixir'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-projectionist'
   Plug 'voldikss/vim-floaterm'
+  Plug 'kassio/neoterm'
   Plug 'junegunn/fzf.vim'
   Plug 'vim-test/vim-test'
+  Plug 'airblade/vim-gitgutter'
+  " Plug 'neovim/nvim-lspconfig'
+  " Plug 'neovim/nvim-lsp'
+  " Plug 'nvim-lua/lsp-status.nvim'
+  " Plug 'nvim-lua/completion-nvim'
+  Plug 'jremmen/vim-ripgrep'
+  Plug 'moll/vim-node'
+  Plug 'tpope/vim-fugitive'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'direnv/direnv.vim'
 call plug#end()
 " }}}
 
@@ -101,6 +112,8 @@ set updatetime=2000 " If that milliseconds nothing is typed CursorHold event wil
 set visualbell " Use visual bell instead of beeping on errors.
 set iskeyword+=- " Treat words with dash as a word in Vim
 set redrawtime=100000
+
+set fixeol " Ensure new line at EOF
 "set re=1
 " }}}
 

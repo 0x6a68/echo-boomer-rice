@@ -1,3 +1,4 @@
 [user]
-name = 0x6a68
-email = hello@jhattwich.com
+  name = 0x6a68
+  email = hello@jhattwich.com
+  signingkey = 09B4B41FBDFBA430

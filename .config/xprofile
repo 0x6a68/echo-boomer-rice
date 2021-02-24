@@ -1,15 +1,12 @@
 #!/bin/sh
 
-# This file runs when a DM logs you into a graphical session.
-
-# Fix Gnome apps slow start, due to failing services
 dbus-update-activation-environment \
 	--systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
 xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/Xresources
 
 mpd &
-configure_xinput &
 configure_xset &
 xss-lock slock &
-dwmblocks &
+multi-head &
+bluetoothctl power on &

@@ -13,6 +13,7 @@ foreach piece (
 	widgets.zsh
 	mappings.zsh
 	completions.zsh
+	bindings.zsh
 ) {
 	source $ZDOTDIR/$piece
 }

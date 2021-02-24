@@ -4,6 +4,7 @@
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CODE_HOME="$HOME/.local/src"
 
 export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 
@@ -15,8 +16,6 @@ export MANPAGER="/bin/sh -c \"col -b | vim --not-a-term -c 'set ft=man ts=8 nomo
 export PAGER=less
 
 # Fix XDG compliance (https://wiki.archlinux.org/index.php/XDG_Base_Directory)
-export TASKDATA="$XDG_DATA_HOME/task"
-export TASKRC="$XDG_CONFIG_HOME/task/taskrc"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password_store"
 export GOPASS_CONFIG="$XDG_CONFIG_HOME/gopass/config.yml"
@@ -26,10 +25,6 @@ export ASDF_DATA_DIR="$XDG_DATA_HOME/asdf"
 export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME="$XDG_CONFIG_HOME/asdf/tool-versions"
 export ASDF_CONFIG_FILE="$XDG_CONFIG_HOME/asdf/asdfrc"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
-export STACK_ROOT="$XDG_DATA_HOME/stack"
-export XMONAD_CONFIG_HOME="$XDG_CONFIG_HOME/xmonad"
-export XMONAD_DATA_HOME="$XDG_DATA_HOME/xmonad"
-export XMONAD_CACHE_HOME="$XDG_CACHE_HOME/xmonad"
 
 export SHORT_HOST=${HOST/.*/}
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
@@ -46,8 +41,7 @@ export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
 export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
 
 # Custom exports
-export DOTFILES_HOME="$HOME/.local/src/github.com/jhattwich/echo-boomer-rice"
-export WIKI_HOME="$HOME/.local/src/github.com/jhattwich/zettelwirtschaft"
+export DOTFILES_HOME="$HOME/.local/src/github.com/0x6a68/echo-boomer-rice"
 
 # export GDK_SCALE=1
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"

@@ -37,6 +37,9 @@
   verbose = true
   gpgsign = true
 
+[gpg]
+  program = gpg
+
 [status]
   short = true
   branch = true
@@ -51,3 +54,6 @@
 [column]
   ui = auto
   tag = never
+
+[tag]
+  gpgsign = true

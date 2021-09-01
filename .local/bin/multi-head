@@ -1,0 +1,5 @@
+#!/bin/sh
+xrandr \
+  --output DP-1-8 --primary --mode 2560x1440 --pos 1440x320 --rotate normal \
+  --output DP-1-1 --mode 2560x1440 --pos 0x0 --rotate left \
+  --dpi DP-1-1

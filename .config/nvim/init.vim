@@ -30,21 +30,15 @@ call plug#begin(g:xdg_data_home . '/plugged')
   Plug 'kassio/neoterm'
   Plug 'itchyny/lightline.vim'
   Plug 'sheerun/vim-polyglot'
-  Plug 'elixir-editors/vim-elixir'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-projectionist'
-  Plug 'voldikss/vim-floaterm'
   Plug 'kassio/neoterm'
   Plug 'junegunn/fzf.vim'
   Plug 'vim-test/vim-test'
   Plug 'airblade/vim-gitgutter'
-  " Plug 'neovim/nvim-lspconfig'
-  " Plug 'neovim/nvim-lsp'
-  " Plug 'nvim-lua/lsp-status.nvim'
-  " Plug 'nvim-lua/completion-nvim'
-  Plug 'jremmen/vim-ripgrep'
-  Plug 'moll/vim-node'
   Plug 'tpope/vim-fugitive'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'ryanoasis/vim-devicons'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'direnv/direnv.vim'
 call plug#end()
@@ -149,14 +143,14 @@ set pumheight=8 " Maximum height of the popup menu for insert mode completion.
 " }}}
 
 " Indentation {{{
-set tabstop=4 " Length of a <Tab> character.
-set shiftwidth=0 " Number of spaces to use for each step of auto indent operators.
-set softtabstop=-1 " Number of spaces that a <Tab> counts.
-set noexpandtab " Disable using spaces instead of tab characters.
-set nosmarttab " Tab key always inserts blanks according to 'tabstop'.
+set tabstop=2 " Length of a <Tab> character.
+set shiftwidth=2 " Number of spaces to use for each step of auto indent operators.
+set expandtab " Enable using spaces instead of tab characters.
+set softtabstop=0 " Number of spaces that a <Tab> counts.
 set autoindent " Copy indent from current line when starting a new line.
-set shiftround " Round indent to multiple of 'shiftwidth'. Applies to > and < commands.
-set smartindent " Automatically inserts one extra level of indentation in some cases.
+set smarttab " Tab key always inserts blanks according to 'tabstop'.
+" set shiftround " Round indent to multiple of 'shiftwidth'. Applies to > and < commands.
+" set smartindent " Automatically inserts one extra level of indentation in some cases.
 " }}}
 
 " Folding {{{

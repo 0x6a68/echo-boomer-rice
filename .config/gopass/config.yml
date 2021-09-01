@@ -2,11 +2,8 @@ autoclip: false
 autoimport: false
 cliptimeout: 0
 exportkeys: false
-nocolor: false
 nopager: false
 notifications: false
 parsing: true
 path: /home/jhh/.local/share/password_store
 safecontent: true
-mounts:
-  steady: /home/jhh/.local/share/gopass/stores/steady

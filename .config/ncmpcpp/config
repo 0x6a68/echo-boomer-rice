@@ -1,8 +1,6 @@
-##
-# Files
-lyrics_directory  = ~/.local/share/ncmpcpp/lyrics
-mpd_music_dir = "~/nextcloud/Personal/Music"
-ncmpcpp_directory = ~/.local/share/ncmpcpp
+ncmpcpp_directory = "~/.config/ncmpcpp"
+lyrics_directory = "~/.local/share/lyrics"
+mpd_music_dir = "~/Music"
 message_delay_time = "1"
 visualizer_type = "spectrum"
 song_list_format = {$4%a - }{%t}|{$8%f$9}$R{$3(%l)$9}
@@ -30,3 +28,4 @@ progressbar_color = black:b
 progressbar_elapsed_color = blue:b
 statusbar_color = red
 statusbar_time_color = cyan:b
+allow_for_physical_item_deletion = yes

@@ -1,6 +1,0 @@
-#!/bin/sh
-
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/xprofile" ] && \
-  source "${XDG_CONFIG_HOME:-$HOME/.config}/xprofile"
-
-exec dwm

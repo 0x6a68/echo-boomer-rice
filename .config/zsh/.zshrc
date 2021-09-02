@@ -7,7 +7,7 @@ type direnv &> /dev/null && eval "$(direnv hook zsh)"
 export ZSH_COMPDUMP="$XDG_CACHE_HOME/.zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
 export HISTFILE="$XDG_DATA_HOME/zshhistory" # Where history logs are stored.
 
-foreach piece (
+foreach file (
 	load.zsh
 	plugins.zsh
 	settings.zsh
@@ -16,5 +16,5 @@ foreach piece (
 	completions.zsh
 	bindings.zsh
 ) {
-	source $ZDOTDIR/$piece
+	source $ZDOTDIR/$file
 }

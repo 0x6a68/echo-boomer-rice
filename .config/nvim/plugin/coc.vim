@@ -1,6 +1,6 @@
 " Plugin: coc {{{
 
-let g:coc_global_extensions=['coc-json', 'coc-html', 'coc-yaml', 'coc-explorer']
+let g:coc_global_extensions=['coc-prettier', 'coc-json', 'coc-html', 'coc-yaml', 'coc-explorer']
 
 " Function, autocmd's & command's {{{
 function! s:check_back_space() abort

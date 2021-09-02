@@ -1,0 +1,24 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "*"
+  ],
+  "coc.preferences.jumpCommand": "vsplit",
+  "diagnostic.errorSign": "‼️",
+  "explorer.keyMappings.global": {
+    "<cr>": [
+      "expandable?",
+      [
+        "expanded?",
+        "collapse",
+        "expand"
+      ],
+      "open"
+    ],
+    "v": "open:vsplit",
+    "s": "open:split"
+  },
+  "explorer.file.root.template": "[icon] [hidden & 1][root] [fullpath]",
+  "explorer.file.showHiddenFiles": true,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.icon.source": "vim-devicons"
+}

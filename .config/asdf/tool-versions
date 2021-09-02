@@ -1,2 +1,2 @@
 direnv 2.28.0
-nodejs lts
+nodejs 16.8.0

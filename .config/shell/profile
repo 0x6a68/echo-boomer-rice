@@ -41,7 +41,7 @@ export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
 export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
 
 # Custom exports
-export DOTFILES_HOME="$HOME/.local/src/github.com/0x6a68/echo-boomer-rice"
+export DOTFILES_HOME="${XDG_CODE_HOME:-$HOME/.local/src}/github.com/0x6a68/echo-boomer-rice"
 
 # export GDK_SCALE=1
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"

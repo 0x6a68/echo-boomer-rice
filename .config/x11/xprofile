@@ -6,6 +6,7 @@ dbus-update-activation-environment \
 xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources
 
 mpd &
+sxhkd &
 xss-lock slock &
 multi-head &
 dunst &

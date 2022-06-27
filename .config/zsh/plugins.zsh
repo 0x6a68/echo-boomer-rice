@@ -22,6 +22,7 @@ alias zinit-update='zinit update --all && zinit self-update && zinit compile --a
 zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
 zinit light sindresorhus/pure
 zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-completions
 zinit light zdharma/fast-syntax-highlighting
 zinit snippet OMZ::plugins/fzf/fzf.plugin.zsh
 

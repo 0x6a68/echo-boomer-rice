@@ -1,6 +1,7 @@
 *.font: monospace:size=10
 
-Xcursor.theme: ComixCursors-Black
+Xcursor.theme: Breeze
+Xcursor.size: 32
 
 ! Dracula Xresources palette
 *.foreground: #F8F8F2

@@ -1,2 +1,6 @@
 direnv 2.28.0
-nodejs 16.8.0
+nodejs lts-gallium
+elixir 1.13.2-otp-24
+rust 1.61.0
+postgres 9.6.24
+java openjdk-18

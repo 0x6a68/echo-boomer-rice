@@ -1,9 +1,13 @@
 autoclip: false
 autoimport: false
-cliptimeout: 0
+cliptimeout: 30
 exportkeys: false
 nopager: false
 notifications: false
 parsing: true
 path: /home/jhh/.local/share/password_store
 safecontent: true
+mounts:
+    nuwork: /home/jhh/.local/share/gopass/stores/nuwork
+    wallstreetdocs: /home/jhh/.local/share/gopass/stores/wallstreetdocs
+    yoffix: /home/jhh/.local/share/gopass/stores/yoffix

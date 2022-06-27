@@ -1,5 +1,3 @@
-source "$(asdf direnv hook asdf)"
-
 export_function() {
   local name=$1
   local alias_dir=$PWD/.direnv/aliases
@@ -29,7 +27,7 @@ layout_postgres() {
   if [[ ! -d "$PGDATA" ]]; then
     initdb
     cat >>"$PGDATA/postgresql.conf" <<-EOF
-			listen_addresses = ''
+			listen_addresses = 'localhost'
 			unix_socket_directories = '$PGHOST'
 		EOF
 

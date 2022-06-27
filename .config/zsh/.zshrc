@@ -8,8 +8,8 @@ export ZSH_COMPDUMP="$XDG_CACHE_HOME/.zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
 export HISTFILE="$XDG_DATA_HOME/zshhistory" # Where history logs are stored.
 
 foreach file (
-	load.zsh
 	plugins.zsh
+	load.zsh
 	settings.zsh
 	widgets.zsh
 	mappings.zsh

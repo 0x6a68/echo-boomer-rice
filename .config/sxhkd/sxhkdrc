@@ -13,3 +13,6 @@ XF86AudioForward
 
 XF86AudioRewind
   mpc -q seek -2
+
+ctrl + shift + 4
+  screenshot selection

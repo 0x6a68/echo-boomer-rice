@@ -60,15 +60,15 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 
 -- Preserving folds
 vim.api.nvim_create_augroup("remember_folds", { clear = true })
-vim.api.nvim_create_autocmd("BufWrite", { group = "remember_folds", pattern = "*.*", command = "mkview" })
-vim.api.nvim_create_autocmd("BufRead", { group = "remember_folds", pattern = "*.*", command = "silent! loadview" })
+vim.api.nvim_create_autocmd({ "BufWrite" }, { group = "remember_folds", pattern = "*", command = "mkview" })
+vim.api.nvim_create_autocmd({ "BufRead" }, { group = "remember_folds", pattern = "*", command = "silent! loadview" })
 
 -- Treesitter fold workaround
 -- ref: https://github.com/nvim-treesitter/nvim-treesitter/issues/1469#issuecomment-1141662730
-vim.api.nvim_create_autocmd({ "BufEnter", "BufAdd", "BufNew", "BufNewFile", "BufWinEnter" }, {
-	group = vim.api.nvim_create_augroup("TS_FOLD_WORKAROUND", {}),
-	callback = function()
-		vim.opt.foldmethod = "expr"
-		vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-	end,
-})
+-- vim.api.nvim_create_autocmd({ "BufEnter", "BufAdd", "BufNew", "BufNewFile", "BufWinEnter" }, {
+-- 	group = vim.api.nvim_create_augroup("TS_FOLD_WORKAROUND", {}),
+-- 	callback = function()
+-- 		vim.opt.foldmethod = "expr"
+-- 		vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- 	end,
+-- })

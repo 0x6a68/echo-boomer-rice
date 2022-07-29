@@ -42,10 +42,17 @@ packer.init({
 return packer.startup(function(use)
 	-- Harpoon
 	use({ "ThePrimeagen/harpoon" })
+	use({ "MunifTanjim/exrc.nvim", requires = { "MunifTanjim/nui.nvim" } })
 	use({
-		"MunifTanjim/exrc.nvim",
-		requires = { "MunifTanjim/nui.nvim" },
+		"nvim-neotest/neotest",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+			"antoinemadec/FixCursorHold.nvim",
+			"haydenmeade/neotest-jest",
+		},
 	})
+	use({ "tpope/vim-projectionist" })
 
 	use({ "wbthomason/packer.nvim", commit = "00ec5adef58c5ff9a07f11f45903b9dbbaa1b422" }) -- Have packer manage itself
 	use({ "nvim-lua/plenary.nvim", commit = "968a4b9afec0c633bc369662e78f8c5db0eba249" }) -- Useful lua functions used by lots of plugins

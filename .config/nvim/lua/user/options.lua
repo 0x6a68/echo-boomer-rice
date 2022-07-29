@@ -33,14 +33,16 @@ vim.opt.signcolumn = "yes" -- always show the sign column, otherwise it would sh
 vim.opt.wrap = false -- display lines as one long line
 vim.opt.scrolloff = 8 -- is one of my fav
 vim.opt.sidescrolloff = 8
-vim.opt.guifont = "monospace:h17" -- the font used in graphical neovim applications
+vim.opt.guifont = "monospace:h15" -- the font used in graphical neovim applications
 vim.opt.fillchars.eob = " "
 vim.opt.shortmess:append("c")
 vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.iskeyword:append("-")
 vim.o.exrc = false
+vim.opt.linebreak = true
+vim.opt.wrap = true
 -- folding
--- vim.wo.foldenable = true
+vim.wo.foldenable = false
 -- vim.wo.foldlevel = 1
 -- vim.wo.foldminlines = 1
 -- vim.o.foldlevelstart = -1

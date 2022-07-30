@@ -1,11 +1,11 @@
-*.font: monospace:size=10
+*.font: monospace:size=12
 
 Xcursor.theme: Breeze
 Xcursor.size: 32
 
 ! TokyoNight colors for Xresources
 
-*background: #1a1b26
+*background: #24283B
 *foreground: #c0caf5
 
 *color0: #15161E

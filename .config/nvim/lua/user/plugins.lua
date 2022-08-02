@@ -43,6 +43,7 @@ return packer.startup(function(use)
 	-- Harpoon
 	use({ "ThePrimeagen/harpoon" })
 	use({ "MunifTanjim/exrc.nvim", requires = { "MunifTanjim/nui.nvim" } })
+	-- testing
 	use({
 		"nvim-neotest/neotest",
 		requires = {
@@ -52,6 +53,17 @@ return packer.startup(function(use)
 			"haydenmeade/neotest-jest",
 		},
 	})
+	-- debugging
+	use({
+		"mfussenegger/nvim-dap",
+		requires = {
+			"rcarriga/nvim-dap-ui",
+			"theHamsta/nvim-dap-virtual-text",
+			"nvim-telescope/telescope-dap.nvim",
+			"Pocco81/dap-buddy.nvim",
+		},
+	})
+
 	use({ "tpope/vim-projectionist" })
 
 	use({ "wbthomason/packer.nvim", commit = "00ec5adef58c5ff9a07f11f45903b9dbbaa1b422" }) -- Have packer manage itself

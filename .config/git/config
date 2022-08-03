@@ -6,3 +6,5 @@
   path = ./conf/urls.gitconfig
 [gpg]
 	program = gpg2
+[push]
+	autoSetupRemote = true

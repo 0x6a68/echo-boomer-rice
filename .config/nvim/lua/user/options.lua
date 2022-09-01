@@ -46,3 +46,4 @@ vim.wo.foldenable = false
 -- vim.wo.foldlevel = 1
 -- vim.wo.foldminlines = 1
 -- vim.o.foldlevelstart = -1
+-- vim.o.shell = 'bash'

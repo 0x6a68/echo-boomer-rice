@@ -16,12 +16,10 @@ define_modules({
 		attach = function(bufnr)
 			foldmethod_backups[bufnr] = vim.wo.foldmethod
 			foldexpr_backups[bufnr] = vim.wo.foldexpr
-			print("attaching")
 			vim.wo.foldmethod = "expr"
 			vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
 		end,
 		detach = function(bufnr)
-			print("detaching")
 			vim.wo.foldmethod = foldmethod_backups[bufnr]
 			vim.wo.foldexpr = foldexpr_backups[bufnr]
 			foldmethod_backups[bufnr] = nil

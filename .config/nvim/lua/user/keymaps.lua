@@ -44,6 +44,7 @@ keymap("v", "p", '"_dP', opts)
 -- Insert --
 -- Press jk fast to enter
 keymap("i", "jk", "<ESC>", opts)
+keymap("n", ";", ":", opts)
 
 -- Visual --
 -- Stay in indent mode
@@ -58,17 +59,15 @@ keymap("n", "<leader>n", ":NvimTreeToggle<CR>", opts)
 -- Telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>fw", ":Telescope live_grep<CR>", opts)
-keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 keymap("n", "<leader>fd", ":Telescope diagnostics<CR>", opts)
+keymap("n", "<leader>fcd", ":Telescope cder<CR>", opts)
 
--- Harpoon
-keymap("n", "<leader>ha", "<cmd>lua require('harpoon.mark').add_file()<cr>", opts)
-keymap("n", "<leader>hm", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", opts)
-keymap("n", "<leader>hh", "<cmd>Telescope harpoon marks<cr>", opts)
-
--- Git
-keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
+-- Neotest
+keymap("n", "<leader>tt", "<cmd>lua require('neotest').run.run()<CR>", opts)
+keymap("n", "<leader>tf", "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<CR>", opts)
+keymap("n", "<leader>ts", "<cmd>lua require('neotest').summary.toggle()<CR>", opts)
+keymap("n", "<leader>to", "<cmd>lua require('neotest').output.open({ enter = true})<CR>", opts)
 
 -- DAP
 keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)

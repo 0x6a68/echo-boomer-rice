@@ -44,7 +44,7 @@ null_ls.setup({
 	sources = {
 		-- formatting
 		formatting.eslint_d,
-		-- formatting.prettierd,
+		formatting.prettierd,
 		formatting.stylua,
 	},
 	on_attach = function(client, bufnr)

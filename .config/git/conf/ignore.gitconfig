@@ -3,3 +3,4 @@ tags
 .envrc
 .direnv
 .projections.json
+.nvimrc.lua

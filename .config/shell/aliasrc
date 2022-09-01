@@ -14,7 +14,8 @@ alias \
   ls="exa -al --color=always --group-directories-first" \
   la="exa -a --color=always --group-directories-first" \
   ll="exa -l --color=always --group-directories-first" \
-  lt="exa -aT --color=always --group-directories-first"
+  lt="exa -aT --color=always --group-directories-first" \
+  tree="exa --tree" \
 
 # Colorize commands when possible.
 alias \

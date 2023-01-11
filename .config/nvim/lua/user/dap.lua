@@ -19,20 +19,26 @@ dap_install.config("python", {})
 -- add other configs here
 
 dapui.setup({
-	sidebar = {
-		elements = {
-			{
-				id = "scopes",
-				size = 0.25, -- Can be float or integer > 1
-			},
-			{ id = "breakpoints", size = 0.25 },
-		},
-		size = 40,
-		position = "right", -- Can be "left", "right", "top", "bottom"
-	},
-	tray = {
-		elements = {},
-	},
+ layouts = {
+    {
+      elements = {
+        'scopes',
+        'breakpoints',
+        'stacks',
+        'watches',
+      },
+      size = 40,
+      position = 'left',
+    },
+    {
+      elements = {
+        'repl',
+        'console',
+      },
+      size = 10,
+      position = 'bottom',
+    },
+  },
 })
 
 vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })

@@ -4,3 +4,5 @@ tags
 .direnv
 .projections.json
 .nvimrc.lua
+dump.rdb
+.null-ls-root

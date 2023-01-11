@@ -1,7 +1,12 @@
-require("neotest").setup({
+local status_ok, neotest = pcall(require, "neotest")
+if not status_ok then
+	return
+end
+
+neotest.setup({
 	status = {
-		-- signs = false,
-		-- virtual_text = true,
+		signs = true,
+		virtual_text = true,
 	},
 	icons = {
 		passed = "✔",
@@ -15,12 +20,14 @@ require("neotest").setup({
 		failed = "Error",
 		running = "Warn",
 	},
+	auto_close = false,
 	output = {
-		open_on_run = false,
+		open_on_run = true,
 	},
 	adapters = {
 		require("neotest-jest")({
 			jestCommand = "npm test --",
 		}),
+		require("neotest-elixir"),
 	},
 })

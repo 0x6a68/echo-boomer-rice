@@ -41,8 +41,12 @@ vim.opt.iskeyword:append("-")
 vim.o.exrc = false
 vim.opt.linebreak = true
 vim.opt.wrap = true
+vim.opt.relativenumber = true
+
 -- folding
 vim.wo.foldenable = false
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 -- vim.wo.foldlevel = 1
 -- vim.wo.foldminlines = 1
 -- vim.o.foldlevelstart = -1

@@ -2,18 +2,16 @@ local status_ok, telescope = pcall(require, "telescope")
 if not status_ok then
 	return
 end
-
+local utils = require("telescope.utils")
 local actions = require("telescope.actions")
 
 telescope.setup({
 	defaults = {
-
 		file_sorter = require("telescope.sorters").get_fzf_sorter,
 		prompt_prefix = " ",
 		selection_caret = " ",
 		path_display = { "smart" },
 		file_ignore_patterns = { ".git/", "node_modules" },
-
 		mappings = {
 			i = {
 				["<Down>"] = actions.cycle_history_next,
@@ -27,13 +25,15 @@ telescope.setup({
 			},
 		},
 	},
-	extensions = {
-		cder = {
-			-- dir_command = { "fd", "--hidden", "--max-depth=3", "--type=d", ".", os.getenv("XDG_CODE_HOME") },
+	pickers = {
+		git_files = {
+			use_git_root = true,
+			cwd = utils.buffer_dir(),
+			prompt_title = string.format("%s/", vim.fn.expand("%:h")),
+			theme = "ivy",
 		},
 	},
 })
 
 telescope.load_extension("fzy_native")
 telescope.load_extension("send_to_harpoon")
-telescope.load_extension("cder")

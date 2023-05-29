@@ -1,6 +1,5 @@
-prefix=${XDG_DATA_HOME}/npm
-cache=${XDG_CACHE_HOME}/npm
-tmp=${XDG_RUNTIME_DIR}/npm
-init-module=${XDG_CONFIG_HOME}/npm/config/npm-init.js
+prefix=/home/jhh/.local/share/npm
+cache=/home/jhh/.cache/npm
+init-module=/home/jhh/.config/npm/config/npm-init.js
 send-metrics=false
-metrics-registry=null
+registry=https://registry.npmjs.org/

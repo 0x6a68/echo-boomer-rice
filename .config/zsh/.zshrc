@@ -18,3 +18,7 @@ foreach file (
 ) {
 	source $ZDOTDIR/$file
 }
+
+# bun completions
+[ -s "/home/jhh/.bun/_bun" ] && source "/home/jhh/.bun/_bun"
+source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"

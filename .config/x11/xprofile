@@ -10,7 +10,6 @@ xset +dpms
 xset dpms 0 0 900
 hsetroot -solid '#24283B'
 picom -b
-nvidia-settings --load-config-only
 bluetoothctl power on
 mpd
 

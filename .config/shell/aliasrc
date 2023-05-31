@@ -1,38 +1,45 @@
 #!/bin/sh
 
+# sudo not required for some system commands
+for command in mount umount sv pacman wg wg-quick su shutdown poweroff reboot; do
+	alias $command="sudo $command"
+done
+unset command
+
 # Use neovim for vim if present.
-command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
+[ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
 
 # Verbosity
 alias \
 	cp="cp -iv" \
 	mv="mv -iv" \
-	rm="rm -vI"
+	rm="rm -vI" \
+	bc="bc -ql" \
+	rsync="rsync -vrPlu" \
+	mkd="mkdir -pv" \
+	yt="yt-dlp --embed-metadata -i" \
+	yta="yt -x -f bestaudio/best" \
+	ytt="yt --skip-download --write-thumbnail" \
+	ffmpeg="ffmpeg -hide_banner"
 
 # Replace "ls" to "exa"
 alias \
-  ls="exa -al --color=always --group-directories-first" \
-  la="exa -a --color=always --group-directories-first" \
-  ll="exa -l --color=always --group-directories-first" \
-  lt="exa -aT --color=always --group-directories-first" \
-  tree="exa --tree" \
+	ls="exa -al --color=always --group-directories-first" \
+	la="exa -a --color=always --group-directories-first" \
+	ll="exa -l --color=always --group-directories-first" \
+	lt="exa -aT --color=always --group-directories-first" \
+	tree="exa --tree"
 
 # Colorize commands when possible.
 alias \
 	grep="grep --color=auto" \
 	diff="diff --color=auto"
 
-# Massage GPG
 alias \
-  gpg="gpg --options $XDG_CONFIG_HOME/gnupg/gpg.conf" \
-  gpg-agent="gpg --options $XDG_CONFIG_HOME/gnupg/gpg-agent.conf"
-
-alias \
-  ssh="ssh -F $XDG_CONFIG_HOME/ssh/ssh_config"
+	ssh="ssh -F $XDG_CONFIG_HOME/ssh/ssh_config"
 
 # Wiki
 alias wiki="vim -c VimwikiIndex"
 
 # Dotfiles
 alias config="git --git-dir=$DOTFILES_HOME --work-tree=$HOME"
-

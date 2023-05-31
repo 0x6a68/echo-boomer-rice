@@ -1,5 +1,0 @@
-prefix=/home/jhh/.local/share/npm
-cache=/home/jhh/.cache/npm
-init-module=/home/jhh/.config/npm/config/npm-init.js
-send-metrics=false
-registry=https://registry.npmjs.org/

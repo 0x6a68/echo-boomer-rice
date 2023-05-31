@@ -2,4 +2,4 @@
 
 set -eu
 
-wg-quick up dk-cph-wg-001
+wg-quick up se-mma-wg-001

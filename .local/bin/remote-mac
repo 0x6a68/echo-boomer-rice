@@ -1,0 +1,4 @@
+#!/bin/sh
+exec /usr/NX/bin/nxplayer \
+  --activegrab \
+  --session ~/NoMachine/dbmacpro.nxs 

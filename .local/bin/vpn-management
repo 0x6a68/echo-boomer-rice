@@ -1,0 +1,5 @@
+#!/bin/sh
+
+set -eu
+
+wg-quick up dk-cph-wg-001

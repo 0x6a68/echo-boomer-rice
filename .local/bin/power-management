@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# enable dpms
+xset +dpms
+xset dpms 0 0 900
+
+# setup lock as screensaver
+xss-lock slock

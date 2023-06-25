@@ -1,4 +1,4 @@
 #!/bin/sh
 exec /usr/NX/bin/nxplayer \
   --activegrab \
-  --session ~/NoMachine/dbmacpro.nxs 
+  --session $XDG_DATA_HOME/nomachine/remote-mac.nxs

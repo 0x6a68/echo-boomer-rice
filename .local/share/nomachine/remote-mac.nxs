@@ -1,0 +1,181 @@
+<!DOCTYPE NXClientSettings>
+<NXClientSettings version="2.1" application="nxclient" >
+ <group name="Advanced" >
+  <option key="Enable remote cursor tracking" value="" />
+  <option key="Disable updating clipboard on mouse selection" value="false" />
+  <option key="Grab keyboard input" value="true" />
+  <option key="Grab mouse input" value="true" />
+  <option key="Enable HTTP proxy" value="false" />
+  <option key="HTTP proxy host" value="" />
+  <option key="HTTP proxy port" value="8080" />
+  <option key="HTTP proxy password" value="EMPTY_PASSWORD" />
+  <option key="Remember HTTP proxy password" value="false" />
+  <option key="HTTP proxy username" value="" />
+  <option key="Emulate middle mouse button" value="true" />
+  <option key="Use TOR for SOCKS proxy connections" value="false" />
+  <option key="Use URL for automatic proxy configuration" value="false" />
+  <option key="Manual proxy configuration type" value="http" />
+  <option key="Proxy configuration mode" value="automatic" />
+  <option key="Automatic proxy configuration URL" value="" />
+ </group>
+ <group name="Environment" >
+  <option key="Use font server" value="false" />
+  <option key="Font server host" value="" />
+  <option key="Font server port" value="7100" />
+ </group>
+ <group name="General" >
+  <option key="Connection request greeting message" value="" />
+  <option key="Automatically connect to session with specified ID" value="" />
+  <option key="Enable session auto-resize" value="" />
+  <option key="Physical desktop auto-resize" value="false" />
+  <option key="Virtual desktop auto-resize" value="false" />
+  <option key="Close the client application when a single session terminates" value="" />
+  <option key="Connection service" value="nx" />
+  <option key="Always create a physical desktop on a headless Linux host" value="false" />
+  <option key="View a specific monitor among available monitors" value="0" />
+  <option key="Command line" value="" />
+  <option key="Use custom server" value="false" />
+  <option key="Custom server command" value="/etc/NX/nxserver" />
+  <option key="Custom Unix Desktop" value="" />
+  <option key="NoMachine daemon port" value="4000" />
+  <option key="Connect to this node when manual selection is enabled" value="" />
+  <option key="Connect to this server when manual selection is enabled" value="" />
+  <option key="Desktop" value="" />
+  <option key="Disable SHM" value="false" />
+  <option key="Disable emulate shared pixmaps" value="false" />
+  <option key="Use render" value="true" />
+  <option key="Try to wake up server when it is powered off" value="false" />
+  <option key="Last connection time" value="1687595863" />
+  <option key="Link quality" value="5" />
+  <option key="Platform of the last connection" value="macOS" />
+  <option key="Node primary display resolution" value="1680x1050" />
+  <option key="Node UUID" value="f570f820-a8a0-4497-8e1b-2b738a90d380" />
+  <option key="Recently connected nodes" value="" />
+  <option key="Physical desktop resize mode" value="scaled" />
+  <option key="Session resize mode" value="" />
+  <option key="Virtual desktop resize mode" value="viewport" />
+  <option key="Server MAC address" value="" />
+  <option key="Resize the remote screen upon connecting" value="window" />
+  <option key="Resolution" value="" />
+  <option key="Use WebRTC for multimedia data" value="true" />
+  <option key="Save connection request greeting message" value="false" />
+  <option key="Remember session window size and position" value="" />
+  <option key="Remember password" value="true" />
+  <option key="Remember username" value="true" />
+  <option key="Session screenshot" value="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" />
+  <option key="Server hardware" value="MacBook Pro" />
+  <option key="Server host" value="192.168.1.10" />
+  <option key="Server port" value="22" />
+  <option key="Server product" value="NoMachine" />
+  <option key="Server product version" value="8.5.3" />
+  <option key="Server hardware specifications" value="Apple M1:17179869184" />
+  <option key="Session" value="" />
+  <option key="Show connection request greeting message panel" value="true" />
+  <option key="Show expiring license warning message" value="true" />
+  <option key="Show remote audio alert message" value="false" />
+  <option key="Show remote display resize message" value="false" />
+  <option key="Show remote desktop view mode message" value="false" />
+  <option key="UDP communication port" value="" />
+  <option key="Use UDP communication for multimedia data" value="true" />
+  <option key="Use specific port for UDP communication" value="false" />
+  <option key="Virtual desktop" value="false" />
+  <option key="NoMachine web server port" value="4443" />
+  <option key="Web session information token" value="" />
+  <option key="Session window geometry" value="1440, 417, 2558, 1410" />
+  <option key="Session window state" value="normal" />
+  <option key="xdm mode" value="" />
+  <option key="xdm broadcast port" value="177" />
+  <option key="xdm list host" value="localhost" />
+  <option key="xdm list port" value="177" />
+  <option key="xdm query host" value="localhost" />
+  <option key="xdm query port" value="177" />
+  <option key="Use custom resolution" value="false" />
+  <option key="Resolution width" value="" />
+  <option key="Resolution height" value="" />
+ </group>
+ <group name="Login" >
+  <option key="Always use selected user login" value="true" />
+  <option key="Alternate NX Key" value="" />
+  <option key="Forward SSH authentication" value="false" />
+  <option key="Guest Mode" value="false" />
+  <option key="Guest password" value="" />
+  <option key="Guest username" value="" />
+  <option key="Guest server" value="" />
+  <option key="Guest desktop sharing mode" value="false" />
+  <option key="Last selected user login" value="system user" />
+  <option key="Server authentication method" value="system" />
+  <option key="Auth" value="Bl#;Yk+IYv8Oh%5Uq)>Ux0D]#:Po%@]t)Cfw1Jm|BZo0JD" />
+  <option key="User" value="johannestroeger" />
+  <option key="Wallix login" value="" />
+  <option key="NX login method" value="password" />
+  <option key="Private key for NX authentication" value="" />
+  <option key="Use alternate smart card module" value="false" />
+  <option key="Smart card authentication module" value="" />
+  <option key="Private key" value="" />
+  <option key="Public Key" value="" />
+  <option key="System auth" value="EMPTY_PASSWORD" />
+  <option key="Two-factor authentication password" value="EMPTY_PASSWORD" />
+  <option key="Remember NoMachine password" value="false" />
+  <option key="Remember two-factor authentication password" value="false" />
+  <option key="Imported private key for NX authentication" value="" />
+  <option key="Use imported private key for NX authentication" value="false" />
+  <option key="Imported private key" value="" />
+  <option key="Use imported private key" value="false" />
+  <option key="System login method" value="password" />
+  <option key="Use alternate NX Key" value="false" />
+  <option key="GSSAPI subsystem for the kerberos authentication" value="kerberos" />
+  <option key="Kerberos key exchange to identify server host" value="false" />
+  <option key="DNS translation when passing server to Kerberos library" value="false" />
+ </group>
+ <group name="Images" >
+  <option key="Disable network-adaptive quality" value="false" />
+  <option key="Disable backingstore" value="false" />
+  <option key="Disable composite" value="false" />
+  <option key="Disable image post-processing" value="false" />
+  <option key="Disable frame buffering on decoding" value="false" />
+  <option key="Disable lossless display refinement" value="false" />
+  <option key="Disable multi-pass display encoding" value="false" />
+  <option key="E-reader display update policy" value="false" />
+  <option key="Video frame rate for display server" value="60" />
+  <option key="Stream downsampling factor" value="0" />
+  <option key="Request a specific frame rate" value="true" />
+  <option key="Video encoding quality" value="5" />
+ </group>
+ <group name="Services" >
+  <option key="Output audio device" value="WH-1000XM2" />
+  <option key="Output audio quality" value="4" />
+  <option key="Audio" value="true" />
+  <option key="IPPPrinting" value="true" />
+  <option key="Enable devices sharing" value="true" />
+  <option key="Shares" value="true" />
+  <option key="Mute audio of the remote physical desktop" value="true" />
+  <option key="Input voice device" value="Autodetect" />
+  <option key="Input voice quality" value="5" />
+ </group>
+ <group name="VNC Session" >
+  <option key="Display" value=":0" />
+  <option key="Password" value="EMPTY_PASSWORD" />
+  <option key="Remember login credentials" value="false" />
+  <option key="Remember" value="false" />
+  <option key="Server" value="" />
+ </group>
+ <group name="Windows Session" >
+  <option key="Application" value="" />
+  <option key="Authentication" value="2" />
+  <option key="Domain" value="" />
+  <option key="Password" value="EMPTY_PASSWORD" />
+  <option key="Remember login credentials" value="false" />
+  <option key="Remember" value="false" />
+  <option key="Run application" value="false" />
+  <option key="Server" value="" />
+  <option key="User" value="" />
+ </group>
+ <group name="Remote Session" >
+  <option key="Host" value="" />
+  <option key="Port" value="" />
+  <option key="Username" value="" />
+  <option key="Password" value="EMPTY_PASSWORD" />
+  <option key="Remember login credentials" value="false" />
+  <option key="Fingerprint" value="" />
+ </group>
+</NXClientSettings>

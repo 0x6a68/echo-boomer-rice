@@ -8,5 +8,3 @@
 	program = gpg2
 [push]
 	autoSetupRemote = true
-[core]
-	hooksPath = /dev/null

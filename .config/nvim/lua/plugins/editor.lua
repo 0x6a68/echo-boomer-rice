@@ -12,6 +12,23 @@ return {
     },
   },
   {
+    "nvim-telescope/telescope.nvim",
+    opts = {
+      defaults = {
+        mappings = {
+          i = {
+            ["<C-k>"] = function(...)
+              return require("telescope.actions").move_selection_previous(...)
+            end,
+            ["<C-j>"] = function(...)
+              return require("telescope.actions").move_selection_next(...)
+            end,
+          },
+        },
+      },
+    },
+  },
+  {
     "nvim-neo-tree/neo-tree.nvim",
     dependencies = {
       "s1n7ax/nvim-window-picker",
@@ -30,5 +47,10 @@ return {
   {
     "tpope/vim-projectionist",
     lazy = false,
+  },
+  {
+    "metakirby5/codi.vim",
+    cmd = "Codi",
+    lazy = true,
   },
 }

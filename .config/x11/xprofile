@@ -3,7 +3,7 @@
 xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources &
 xrdbpid=$! # Uncomment to use Xresources colors/settings on startup
 
-autostart="multi-head power-management vpn-management"
+autostart="dunst sxhkd multi-head power-management vpn-management"
 
 for program in $autostart; do
 	pidof -sx "$program" || "$program" &

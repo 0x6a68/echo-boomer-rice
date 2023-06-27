@@ -6,10 +6,15 @@ if [[ ! -f $XDG_CONFIG_HOME/zsh/.zi/bin/zi.zsh ]]; then
     print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
     print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
+typeset -Ag ZI
+ZI[HOME_DIR]="$XDG_DATA_HOME/zsh/zi"
+
 source "$XDG_CONFIG_HOME/zsh/.zi/bin/zi.zsh"
-autoload -Uz _zi
-(( ${+_comps} )) && _comps[zi]=_zi
-# zsh plugins
+
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Plugins {{{
 zi ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
 zi light sindresorhus/pure
 zi light zsh-users/zsh-autosuggestions
@@ -20,3 +25,4 @@ zi snippet OMZ::plugins/fzf/fzf.plugin.zsh
 zstyle :omz:plugins:ssh-agent identities keys/ga_rsa
 zstyle :omz:plugins:ssh-agent lifetime 4h
 zi snippet OMZ::plugins/ssh-agent/ssh-agent.plugin.zsh
+# }}}

@@ -1,41 +1,31 @@
 return {
-  -- add elixir to treesitter
+  -- add json to treesitter
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
-      if type(opts.ensure_installed) == "table" then
-        vim.list_extend(opts.ensure_installed, { "elixir", "eex", "heex", "surface" })
-      end
+      vim.list_extend(opts.ensure_installed, { "elixir", "heex", "eex" })
     end,
   },
-  -- add lsp support
+
+  {
+    "nvimtools/none-ls.nvim",
+    opts = function(_, opts)
+      local nls = require("null-ls")
+      vim.list_extend(opts.sources, { nls.builtins.formatting.mix })
+    end,
+  },
+
+  -- correctly setup lspconfig
   {
     "neovim/nvim-lspconfig",
-    ---@type lspconfig.options
     opts = {
+      -- make sure mason installs the server
       servers = {
-        elixirls = {
-          dialyzerEnabled = true,
-          fetchDeps = true,
-        },
+        elixirls = {},
       },
     },
   },
-  -- add null-ls support
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-    opts = function(_, opts)
-      local nls = require("null-ls")
-      local tools = {
-        nls.builtins.diagnostics.credo,
-        -- nls.builtins.formatting.mix,
-        -- nls.builtins.formatting.surface,
-      }
-      for _, tool in ipairs(tools) do
-        table.insert(opts.sources, tool)
-      end
-    end,
-  },
+
   -- add projectionist support
   {
     "tpope/vim-projectionist",
@@ -124,46 +114,9 @@ return {
           },
         },
       }
-      -- code
     end,
   },
-  -- add dap support
-  {
-    "mfussenegger/nvim-dap",
-    dependencies = {
-      {
-        "jay-babu/mason-nvim-dap.nvim",
-        opts = function(_, opts)
-          table.insert(opts.ensure_installed, "elixir")
-        end,
-      },
-    },
-    config = function()
-      local dap = require("dap")
-      local elixirLS = require("mason-registry").get_package("elixir-ls"):get_install_path() .. "/debugger.sh"
 
-      dap.adapters.mix_task = {
-        type = "executable",
-        command = elixirLS,
-        args = {},
-      }
-      dap.configurations.elixir = {
-        {
-          type = "mix_task",
-          name = "mix test",
-          task = "test",
-          taskArgs = { "--trace" },
-          request = "launch",
-          startApps = true,
-          projectDir = "${workspaceFolder}",
-          requireFiles = {
-            "test/**/test_helper.exs",
-            "test/**/*_test.exs",
-          },
-        },
-      }
-    end,
-  },
   -- add test support
   {
     "nvim-neotest/neotest",

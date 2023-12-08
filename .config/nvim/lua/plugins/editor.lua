@@ -1,249 +1,264 @@
-local Util = require("util")
-
 return {
-  -- color scheme
-  {
-    "folke/tokyonight.nvim",
-    config = function()
-      vim.cmd("colorscheme tokyonight")
-    end,
-  },
-
-  -- telescope: fuzzy finder
+  -- telescope
   {
     "nvim-telescope/telescope.nvim",
-    commit = vim.fn.has("nvim-0.9.0") == 0 and "057ee0f8783" or nil,
-    cmd = "Telescope",
-    version = false, -- telescope did only one release, so use HEAD for now
-    dependencies = {
-      {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        build = "make",
-        enabled = vim.fn.executable("make") == 1,
-        config = function()
-          Util.on_load("telescope.nvim", function()
-            require("telescope").load_extension("fzf")
-          end)
-        end,
-      },
-    },
-    keys = {
-      { "<leader>/", Util.telescope("live_grep"), desc = "Grep (root dir)" },
-      { "<leader>ff", Util.telescope("files"), desc = "Find Files (root dir)" },
-      { "<leader>sw", Util.telescope("grep_string", { word_match = "-w" }), desc = "Word (root dir)" },
-      { "<leader>sW", Util.telescope("grep_string", { cwd = false, word_match = "-w" }), desc = "Word (cwd)" },
-      { "<leader>sw", Util.telescope("grep_string"), mode = "v", desc = "Selection (root dir)" },
-      { "<leader>sW", Util.telescope("grep_string", { cwd = false }), mode = "v", desc = "Selection (cwd)" },
-    },
     opts = {
       defaults = {
-        prompt_prefix = " ",
-        selection_caret = " ",
-        -- open files in the first window that is an actual file.
-        -- use the current window if no other window is available.
-        get_selection_window = function()
-          local wins = vim.api.nvim_list_wins()
-          table.insert(wins, 1, vim.api.nvim_get_current_win())
-          for _, win in ipairs(wins) do
-            local buf = vim.api.nvim_win_get_buf(win)
-            if vim.bo[buf].buftype == "" then
-              return win
-            end
-          end
-          return 0
-        end,
         mappings = {
           i = {
-            ["<c-t>"] = function(...)
-              return require("trouble.providers.telescope").open_with_trouble(...)
-            end,
-            ["<a-t>"] = function(...)
-              return require("trouble.providers.telescope").open_selected_with_trouble(...)
-            end,
-            ["<a-i>"] = function()
-              local action_state = require("telescope.actions.state")
-              local line = action_state.get_current_line()
-              Util.telescope("find_files", { no_ignore = true, default_text = line })()
-            end,
-            ["<a-h>"] = function()
-              local action_state = require("telescope.actions.state")
-              local line = action_state.get_current_line()
-              Util.telescope("find_files", { hidden = true, default_text = line })()
-            end,
-            ["<C-Down>"] = function(...)
-              return require("telescope.actions").cycle_history_next(...)
-            end,
-            ["<C-Up>"] = function(...)
-              return require("telescope.actions").cycle_history_prev(...)
-            end,
-            ["<C-f>"] = function(...)
-              return require("telescope.actions").preview_scrolling_down(...)
-            end,
-            ["<C-b>"] = function(...)
-              return require("telescope.actions").preview_scrolling_up(...)
-            end,
-          },
-          n = {
-            ["q"] = function(...)
-              return require("telescope.actions").close(...)
-            end,
+            ["<C-j>"] = require("telescope.actions").move_selection_next, -- scroll the list with <c-j>
+            ["<C-k>"] = require("telescope.actions").move_selection_previous, -- scroll the list with <c-k>
           },
         },
       },
     },
   },
-
-  -- project drawer
+  -- notify
+  { "j-hui/fidget.nvim" },
+  -- file navigation
   {
-    "stevearc/oil.nvim",
+    "echasnovski/mini.files",
     keys = {
       {
         "-",
         function()
-          require("oil").open()
+          require("mini.files").open(vim.api.nvim_buf_get_name(0), true)
         end,
-        { desc = "Open parent directory" },
+        desc = "Open mini.files (directory of current file)",
       },
+      -- {
+      --   "_",
+      --   function()
+      --     require("mini.files").open(vim.loop.cwd(), true)
+      --   end,
+      --   desc = "Open mini.files (cwd)",
+      -- },
     },
     opts = {
-      keymaps = {
-        ["<C-v>"] = "actions.select_vsplit",
-        ["<C-x>"] = "actions.select_split",
-        ["q"] = "actions.close",
+      mappings = {
+        go_in_plus = "<cr>",
+        show_help = "?",
+        go_out_plus = "-",
       },
-      columns = {},
-      view_options = {
-        show_hidden = true,
+      windows = {
+        preview = false,
       },
     },
-  },
+    init = function()
+      local map_split = function(buf_id, lhs, direction)
+        local minifiles = require("mini.files")
+        local function rhs()
+          local window = minifiles.get_target_window()
+          -- Noop if the explorer isn't open or the cursor is on a directory.
+          if window == nil or minifiles.get_fs_entry().fs_type == "directory" then
+            return
+          end
 
+          -- Make a new window and set it as target.
+          local new_target_window
+          vim.api.nvim_win_call(window, function()
+            vim.cmd(direction .. " split")
+            new_target_window = vim.api.nvim_get_current_win()
+          end)
+
+          minifiles.set_target_window(new_target_window)
+          -- Go in and close the explorer.
+          minifiles.go_in()
+          minifiles.close()
+        end
+
+        vim.keymap.set("n", lhs, rhs, { buffer = buf_id, desc = "Split " .. string.sub(direction, 12) })
+      end
+
+      -- add extra keymappings
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "MiniFilesBufferCreate",
+        callback = function(args)
+          local buf_id = args.data.buf_id
+          map_split(buf_id, "<C-x>", "belowright horizontal")
+          map_split(buf_id, "<C-v>", "belowright vertical")
+        end,
+      })
+    end,
+  },
   -- harpoon
   {
     "ThePrimeagen/harpoon",
-    dependencies = "nvim-telescope/telescope.nvim",
+    branch = "harpoon2",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
     keys = {
-      { "<leader>ht", "<cmd>Telescope harpoon marks<CR>", desc = "Telescope menu" },
       {
-        "<leader><leader>",
+        "<leader>hh",
         function()
-          require("harpoon.ui").toggle_quick_menu()
+          local harpoon = require("harpoon")
+          harpoon.ui:toggle_quick_menu(harpoon:list())
         end,
-        desc = "Harpoon menu",
+        desc = "harpoon menu",
       },
       {
-        "<leader>ha",
+        "<Leader>ha",
         function()
-          require("harpoon.mark").add_file()
+          local harpoon_list = require("harpoon"):list()
+          local item_to_toggle = harpoon_list.config.add(harpoon_list.config)
+
+          ---@type number?
+          local item_to_toggle_index = nil
+          for index, item in ipairs(harpoon_list.items) do
+            if harpoon_list.config.equals(item, item_to_toggle) then
+              item_to_toggle_index = index
+              break
+            end
+          end
+
+          if item_to_toggle_index ~= nil then
+            harpoon_list:removeAt(item_to_toggle_index)
+            vim.notify("Removed file " .. item_to_toggle.value)
+          else
+            harpoon_list:append(item_to_toggle)
+            vim.notify("Appended file " .. item_to_toggle.value)
+          end
         end,
-        desc = "Add file as marked",
+        desc = "(harpoon) Toggle file",
       },
       {
-        "<leader>hn",
+        "[h",
         function()
-          require("harpoon.ui").nav_next()
+          require("harpoon"):list():prev()
         end,
-        desc = "Next file",
+        desc = "(harpoon) Previous file",
       },
       {
-        "<leader>hp",
+        "]h",
         function()
-          require("harpoon.ui").nav_prev()
+          require("harpoon"):list():next()
         end,
-        desc = "Previous file",
+        desc = "(harpoon) Next file",
+      },
+    },
+    config = function(_, opts)
+      require("harpoon"):setup(opts)
+    end,
+    opts = {
+      settings = {
+        save_on_toggle = true,
+      },
+    },
+  },
+  -- open files by line and column numbers
+  { "wsdjeg/vim-fetch" },
+  -- alternative files
+  {
+    "rgroli/other.nvim",
+    keys = {
+      {
+        "<leader>fv",
+        "<cmd>OtherVSplit<CR>",
+        desc = "Open alternative file in v-split",
+      },
+      {
+        "<leader>fs",
+        "<cmd>OtherSplit<CR>",
+        desc = "Open alternative file in split",
       },
     },
     config = function()
-      require("telescope").load_extension("harpoon")
+      require("other-nvim").setup({
+        showMissingFiles = true,
+        mappings = {
+          {
+            context = "test",
+            pattern = "(.*).ts$",
+            target = "%1.spec.ts",
+          },
+          {
+            context = "implementation",
+            pattern = "(.*).spec.ts$",
+            target = "%1.ts",
+          },
+          {
+            context = "test",
+            pattern = "(.*).vue$",
+            target = "%1.spec.ts",
+          },
+          {
+            context = "implementation",
+            pattern = "(.*).spec.ts$",
+            target = "%1.vue",
+          },
+        },
+      })
     end,
   },
-
-  -- trouble, better diagnostics list and others
+  -- trouble
   {
     "folke/trouble.nvim",
-    cmd = { "TroubleToggle", "Trouble" },
-    opts = { use_diagnostic_signs = true },
-    keys = {
-      { "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
-      { "<leader>xX", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
-      { "<leader>xL", "<cmd>TroubleToggle loclist<cr>", desc = "Location List (Trouble)" },
-      { "<leader>xQ", "<cmd>TroubleToggle quickfix<cr>", desc = "Quickfix List (Trouble)" },
-      {
-        "[q",
-        function()
-          if require("trouble").is_open() then
-            require("trouble").previous({ skip_groups = true, jump = true })
-          else
-            local ok, err = pcall(vim.cmd.cprev)
-            if not ok then
-              vim.notify(err, vim.log.levels.ERROR)
+    init = function()
+      vim.api.nvim_create_autocmd({ "FileType" }, {
+        -- enable delete for trouble diagnostics
+        pattern = "Trouble",
+        callback = function(event)
+          if require("trouble.config").options.mode ~= "telescope" then
+            return
+          end
+
+          local function delete()
+            local folds = require("trouble.folds")
+            local telescope = require("trouble.providers.telescope")
+
+            local ord = { "" } -- { filename, ... }
+            local files = { [""] = { 1, 1, 0 } } -- { [filename] = { start, end, start_index } }
+            for i, result in ipairs(telescope.results) do
+              if files[result.filename] == nil then
+                local next = files[ord[#ord]][2] + 1
+                files[result.filename] = { next, next, i }
+                table.insert(ord, result.filename)
+              end
+              if not folds.is_folded(result.filename) then
+                files[result.filename][2] = files[result.filename][2] + 1
+              end
+            end
+
+            local line = unpack(vim.api.nvim_win_get_cursor(0))
+            for i, id in ipairs(ord) do
+              if line == files[id][1] then -- Group
+                local next = ord[i + 1]
+                for _ = files[id][3], next and files[next][3] - 1 or #telescope.results do
+                  table.remove(telescope.results, files[id][3])
+                end
+                break
+              elseif line <= files[id][2] then -- Item
+                table.remove(telescope.results, files[id][3] + (line - files[id][1]) - 1)
+                break
+              end
+            end
+
+            if #telescope.results == 0 then
+              require("trouble").close()
+            else
+              require("trouble").refresh({ provider = "telescope", auto = false })
             end
           end
-        end,
-        desc = "Previous trouble/quickfix item",
-      },
-      {
-        "]q",
-        function()
-          if require("trouble").is_open() then
-            require("trouble").next({ skip_groups = true, jump = true })
-          else
-            local ok, err = pcall(vim.cmd.cnext)
-            if not ok then
-              vim.notify(err, vim.log.levels.ERROR)
-            end
-          end
-        end,
-        desc = "Next trouble/quickfix item",
-      },
-    },
-  },
 
-  -- git
+          vim.keymap.set("n", "dd", delete, { buffer = event.buf })
+        end,
+      })
+    end,
+  },
+  -- git integration
   {
-    "tpope/vim-fugitive",
+    "NeogitOrg/neogit",
+    dependencies = { "nvim-lua/plenary.nvim" },
     keys = {
-      { "<leader>g", "<cmd>Git<CR>", desc = "git" },
-    },
-  },
-
-  -- git signs highlights text that has changed since the list
-  {
-    "lewis6991/gitsigns.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    opts = {
-      signs = {
-        add = { text = "▎" },
-        change = { text = "▎" },
-        delete = { text = "" },
-        topdelete = { text = "" },
-        changedelete = { text = "▎" },
-        untracked = { text = "▎" },
+      {
+        "<leader>gg",
+        function()
+          require("neogit").open()
+        end,
+        desc = "neogit menu",
       },
     },
-  },
-
-  -- Finds and lists all of the TODO, HACK, BUG, etc comment
-  -- in your project and loads them into a browsable list.
-  {
-    "folke/todo-comments.nvim",
-    cmd = { "TodoTrouble", "TodoTelescope" },
-    event = { "BufReadPost", "BufNewFile" },
     config = true,
-    -- stylua: ignore
-    keys = {
-      { "]t", function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
-      { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
-      { "<leader>xt", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
-      { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
-      { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todo" },
-      { "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
-    },
-    opts = { signs = false },
-  },
-
-  -- open files by line and column numbers
-  {
-    "wsdjeg/vim-fetch",
   },
 }
